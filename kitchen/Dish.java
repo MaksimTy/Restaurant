@@ -1,5 +1,7 @@
 package com.javarush.task.task27.task2712.kitchen;
 
+import java.util.Arrays;
+
 public enum Dish {
     Fish,
     Steak,
@@ -8,16 +10,7 @@ public enum Dish {
     Water;
 
     public static String allDishesToString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        String delimiter = ", ";
-        for (Dish dish : Dish.values()
-        ) {
-            stringBuilder
-                    .append(dish.name())
-                    .append(delimiter);
-        }
-        int index = stringBuilder.lastIndexOf(delimiter);
-        stringBuilder.delete(index, stringBuilder.length());
-        return stringBuilder.toString();
+        StringBuilder result = new StringBuilder(Arrays.toString(Dish.values()));
+        return result.substring(1, result.length() - 1);
     }
 }
