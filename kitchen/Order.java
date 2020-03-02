@@ -21,6 +21,22 @@ public class Order {
         this.dishes = ConsoleHelper.getAllDishesForOrder();
     }
 
+    /**
+     * Расчитывает продолжительность приготовления всего заказа.
+     *
+     * @return продолжительность приготовления в минутах.
+     */
+    public int getTotalCookingTime() {
+        return this.dishes.stream()
+                .map(Dish::getDuration)
+                .reduce(Integer::sum)
+                .get();
+    }
+
+    public boolean isEmpty() {
+        return this.dishes.size() <= 0;
+    }
+
     @Override
     public String toString() {
         if (this.dishes.size() == 0) {
@@ -28,5 +44,6 @@ public class Order {
         }
         return "Your order: " +
                 Arrays.toString(dishes.toArray()) +
-                  tablet;  }
+                tablet;
+    }
 }
